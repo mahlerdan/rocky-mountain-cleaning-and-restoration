@@ -7,6 +7,34 @@ import { SERVICES_DATA } from "@/const";
 
 import SEO from "@/components/SEO";
 
+// Map service IDs to their corresponding stock photos
+const SERVICE_IMAGES: Record<string, { src: string; alt: string }> = {
+  "water-damage": {
+    src: "/images/service-water-damage.webp",
+    alt: "Professional water damage restoration and extraction equipment"
+  },
+  "fire-damage": {
+    src: "/images/service-fire-damage.webp",
+    alt: "Fire and smoke damage restoration work in progress"
+  },
+  "mold-remediation": {
+    src: "/images/service-mold-remediation.webp",
+    alt: "Certified mold remediation specialist in protective gear"
+  },
+  "asbestos-removal": {
+    src: "/images/service-mold-remediation.webp",
+    alt: "Licensed asbestos abatement specialist in full protective equipment"
+  },
+  "carpet-cleaning": {
+    src: "/images/service-carpet-cleaning.webp",
+    alt: "Professional carpet steam cleaning and deep extraction"
+  },
+  "tile-duct-cleaning": {
+    src: "/images/service-tile-cleaning.webp",
+    alt: "High-pressure tile and grout cleaning service"
+  }
+};
+
 export default function Services() {
   const [location] = useLocation();
 
@@ -50,6 +78,7 @@ export default function Services() {
           {SERVICES_DATA.map((service, index) => {
             const IconComponent = service.icon;
             const isEven = index % 2 === 0;
+            const serviceImage = SERVICE_IMAGES[service.id];
 
             return (
               <div
@@ -111,30 +140,59 @@ export default function Services() {
                   </div>
                 </div>
 
-                {/* Visual Accent Frame (No Stock Images) */}
+                {/* Service Photo */}
                 <div className={`lg:col-span-5 ${isEven ? "lg:order-2" : "lg:order-1"}`}>
                   <div className="relative aspect-square w-full max-w-[380px] mx-auto">
-                    {/* Multi-layered vector cards with custom gradient mesh representing clean environments */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/15 to-primary/5 border border-border/80 rounded-2xl shadow-lg flex flex-col justify-center items-center p-8 text-center space-y-4">
-                      <div className="w-16 h-16 rounded-full bg-primary text-secondary flex items-center justify-center shadow-md">
-                        <IconComponent className="w-8 h-8" />
-                      </div>
-                      <span className="font-display font-black text-xl text-primary uppercase tracking-wider">
-                        {service.title.split(" ")[0]} Care
-                      </span>
-                      <div className="h-0.5 w-12 bg-secondary" />
-                      <p className="text-xs text-muted-foreground max-w-xs font-body leading-relaxed">
-                        Our specialized equipment, industry certifications, and environmental safeguards guarantee a spotless, safe finish.
-                      </p>
-                      
-                      {/* Technical Spec Badge */}
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary text-primary-foreground text-xs font-mono">
-                        <Info className="w-3.5 h-3.5 text-secondary" />
-                        IICRC Standards Applied
-                      </div>
-                    </div>
-                    {/* Offset Border Frame */}
-                    <div className="absolute inset-0 border border-secondary rounded-2xl translate-x-3 translate-y-3 -z-10" />
+                    {serviceImage ? (
+                      <>
+                        <div className="absolute inset-0 rounded-2xl shadow-lg overflow-hidden">
+                          <img
+                            src={serviceImage.src}
+                            alt={serviceImage.alt}
+                            className="w-full h-full object-cover object-center"
+                            loading="lazy"
+                          />
+                          {/* Subtle overlay with service badge */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
+                          <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between">
+                            <div className="flex items-center gap-2">
+                              <div className="w-8 h-8 rounded-full bg-secondary text-primary flex items-center justify-center shadow-md shrink-0">
+                                <IconComponent className="w-4 h-4" />
+                              </div>
+                              <span className="font-display font-bold text-sm text-primary-foreground uppercase tracking-wide">
+                                {service.title.split(" ")[0]} Care
+                              </span>
+                            </div>
+                            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/80 text-primary-foreground text-xs font-mono">
+                              <Info className="w-3.5 h-3.5 text-secondary" />
+                              IICRC Certified
+                            </div>
+                          </div>
+                        </div>
+                        {/* Offset Border Frame */}
+                        <div className="absolute inset-0 border border-secondary rounded-2xl translate-x-3 translate-y-3 -z-10" />
+                      </>
+                    ) : (
+                      <>
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/15 to-primary/5 border border-border/80 rounded-2xl shadow-lg flex flex-col justify-center items-center p-8 text-center space-y-4">
+                          <div className="w-16 h-16 rounded-full bg-primary text-secondary flex items-center justify-center shadow-md">
+                            <IconComponent className="w-8 h-8" />
+                          </div>
+                          <span className="font-display font-black text-xl text-primary uppercase tracking-wider">
+                            {service.title.split(" ")[0]} Care
+                          </span>
+                          <div className="h-0.5 w-12 bg-secondary" />
+                          <p className="text-xs text-muted-foreground max-w-xs font-body leading-relaxed">
+                            Our specialized equipment, industry certifications, and environmental safeguards guarantee a spotless, safe finish.
+                          </p>
+                          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary text-primary-foreground text-xs font-mono">
+                            <Info className="w-3.5 h-3.5 text-secondary" />
+                            IICRC Standards Applied
+                          </div>
+                        </div>
+                        <div className="absolute inset-0 border border-secondary rounded-2xl translate-x-3 translate-y-3 -z-10" />
+                      </>
+                    )}
                   </div>
                 </div>
               </div>

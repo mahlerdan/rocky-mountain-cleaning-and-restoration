@@ -71,30 +71,28 @@ export default function About() {
             </p>
           </div>
 
-          {/* Right Visual Box */}
+          {/* Right - Team Photo */}
           <div className="lg:col-span-5 relative">
             <div className="relative aspect-[4/5] w-full max-w-[360px] mx-auto">
-              <div className="absolute inset-0 bg-primary rounded-2xl shadow-2xl p-8 flex flex-col justify-between border border-primary-foreground/10">
-                <div className="space-y-4">
-                  <div className="inline-flex p-3 bg-secondary rounded-lg text-primary">
-                    <Shield className="w-6 h-6" />
+              <div className="absolute inset-0 rounded-2xl shadow-2xl overflow-hidden">
+                <img
+                  src="/images/about-team.webp"
+                  alt="Rocky Mountain Cleaning & Restoration certified professional team"
+                  className="w-full h-full object-cover object-center"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-primary/20" />
+                {/* Bottom info overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-primary/90 to-transparent">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-xs font-semibold text-secondary uppercase tracking-widest">
+                      <MapPin className="w-4 h-4" />
+                      <span>Based in Pocatello, ID</span>
+                    </div>
+                    <span className="text-xs text-primary-foreground/70 font-body block">
+                      Serving Chubbuck, Blackfoot, Idaho Falls, and surrounding Southeast Idaho.
+                    </span>
                   </div>
-                  <h3 className="font-display font-extrabold text-2xl text-primary-foreground">
-                    Fully Certified Firm
-                  </h3>
-                  <p className="text-sm text-primary-foreground/70 leading-relaxed font-body">
-                    We strictly adhere to the Institute of Inspection, Cleaning and Restoration Certification (IICRC) standards for all mitigation, remediation, and cleaning.
-                  </p>
-                </div>
-                
-                <div className="space-y-2 border-t border-primary-foreground/15 pt-6">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-secondary uppercase tracking-widest">
-                    <MapPin className="w-4 h-4" />
-                    <span>Based in Pocatello, ID</span>
-                  </div>
-                  <span className="text-xs text-primary-foreground/50 font-body block">
-                    Serving Chubbuck, Blackfoot, Idaho Falls, and surrounding Southeast Idaho.
-                  </span>
                 </div>
               </div>
               {/* Offset Frame */}

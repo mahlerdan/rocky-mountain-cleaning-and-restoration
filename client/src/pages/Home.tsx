@@ -17,8 +17,19 @@ export default function Home() {
       />
       {/* Hero Section - Asymmetric Tectonic Design */}
       <section className="relative overflow-hidden bg-primary text-primary-foreground py-20 lg:py-32 topo-bg">
+        {/* Hero background image with overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/hero-cleaning.webp"
+            alt="Professional restoration and cleaning crew at work"
+            className="w-full h-full object-cover object-center"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-primary/80" />
+        </div>
+
         {/* Abstract Geometric Background Blocks */}
-        <div className="absolute top-0 right-0 w-full lg:w-1/2 h-full opacity-15 lg:opacity-20 pointer-events-none">
+        <div className="absolute top-0 right-0 w-full lg:w-1/2 h-full opacity-15 lg:opacity-20 pointer-events-none z-[1]">
           <div className="absolute right-[-10%] top-[-10%] w-[80%] h-[80%] bg-secondary rounded-full blur-3xl" />
           <div className="absolute right-[10%] bottom-[-10%] w-[60%] h-[60%] bg-blue-400 rounded-full blur-3xl" />
         </div>
@@ -70,7 +81,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Hero Right - Structural Graphic Frame (No Stock Images) */}
+          {/* Hero Right - Structural Graphic Frame */}
           <div className="lg:col-span-5 relative hidden lg:block">
             <div className="relative w-full aspect-square max-w-[450px] mx-auto">
               {/* Overlapping Solid Tectonic Cards representing Restoration & Pure Cleanliness */}
@@ -189,26 +200,25 @@ export default function Home() {
       {/* About Preview Section - Asymmetrical Layout */}
       <section className="py-20 bg-muted/40 relative overflow-hidden">
         <div className="container grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left - Structural Graphic Box */}
+          {/* Left - Team Photo */}
           <div className="lg:col-span-5 relative hidden lg:block">
             <div className="relative w-full aspect-[4/5] max-w-[400px] mx-auto">
-              <div className="absolute inset-0 bg-primary rounded-xl shadow-2xl p-8 flex flex-col justify-between border border-primary-foreground/10">
-                <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-lg bg-secondary text-primary flex items-center justify-center">
-                    <Shield className="w-6 h-6" />
+              <div className="absolute inset-0 rounded-xl shadow-2xl overflow-hidden">
+                <img
+                  src="/images/about-team.webp"
+                  alt="Rocky Mountain Cleaning & Restoration professional team"
+                  className="w-full h-full object-cover object-center"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-primary/30" />
+                {/* Overlay badge */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-primary/90 to-transparent">
+                  <div className="space-y-1">
+                    <span className="text-xs font-semibold text-secondary uppercase tracking-widest block">Emergency Hotline</span>
+                    <a href="tel:2082444420" className="font-display font-black text-2xl text-red-400 hover:underline block">
+                      (208) 244-4420
+                    </a>
                   </div>
-                  <h3 className="font-display font-extrabold text-2xl text-primary-foreground">
-                    Rocky Mountain Standard
-                  </h3>
-                  <p className="text-sm text-primary-foreground/70 leading-relaxed font-body">
-                    We don't just clean; we restore safety, health, and peace of mind. Every technician is fully certified, drug-tested, and background-checked.
-                  </p>
-                </div>
-                <div className="border-t border-primary-foreground/15 pt-6 space-y-2">
-                  <span className="text-xs font-semibold text-secondary uppercase tracking-widest block">Emergency Hotline</span>
-                  <a href="tel:2082444420" className="font-display font-black text-2xl text-red-400 hover:underline block">
-                    (208) 244-4420
-                  </a>
                 </div>
               </div>
               {/* Decorative Frame */}
